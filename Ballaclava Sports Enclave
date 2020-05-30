@@ -1,12 +1,16 @@
+
 import random
 import time
 import pygame
-import pygame.display
+#import pygame.display
 import pygame.mixer
 import csv
+import sys
+from colorama import *
+init()
 pygame.mixer.init()
 pygame.init()
-pygame.display.init()
+#pygame.display.init()
 
 #Background Music
 #snd_dir = path.join(path.dirname(__file__),'sound')
@@ -23,7 +27,7 @@ frooti = "WIL.wav"          #VG         CLink
 battle = "bigboy.mpeg"      #VG         SOTC
 halom = "halom.mp3"         #VG         LjB0
 mariom = "mariom.mp3"       #VG         LjB0
-pygame.mixer.music.load(Vidal)
+pygame.mixer.music.load(tris)
 pygame.mixer.music.set_volume(0.9)
 pygame.mixer.music.play(-1)
 #tempah = pygame.mixer.Sound("something.wav")    #Random Sound
@@ -34,7 +38,7 @@ od = pygame.mixer.Sound("Door.wav")
 ######################################################
    
 
-print("                                       Text-Based Choose Your Own Adventure Game                      ")
+print(Fore.RED + "                                       Text-Based Choose Your Own Adventure Game                      ")
 
 #Calibrating User Response
 answer_A = ["A", "a"]
@@ -104,21 +108,21 @@ with open('yugz.csv') as file:
               if(count>5):
                   break
                 
-joseph = int(random.randint(1,5))
-b1name = namarr[joseph]
-b1int = intar[joseph]
-b1str = strar[joseph]
-b1agi = agiar[joseph]
-b1char = chaar[joseph]
-b1end = endar[joseph]
+j = int(random.randint(1,5))
+b1name = namarr[j]
+b1int = intar[j]
+b1str = strar[j]
+b1agi = agiar[j]
+b1char = chaar[j]
+b1end = endar[j]
 ###########################################################
 
 #time.sleep(1)
 
 print(b1name)
-print("                    Statistic Generator             ")
+print(Fore.YELLOW + "                    Statistic Generator             ")
 time.sleep(1)
-print("\n We shall now set the stat points for the game. These points "
+print(Fore.WHITE + "\n We shall now set the stat points for the game. These points "
       " are going to determine the actions that a player can physically "
       "achieve. We would suggest taking actions based on the structure "
       "of your stat build (i.e try to make actions which rely on stats "
@@ -134,14 +138,13 @@ required = ("\n Please Use only the provided options \n")
 #race =
 
 
-print("\n Select your class from the following : \n"
+print(Fore.CYAN + "\n Select your class from the following : \n"
       "1. Adventurer (+1 All) \n"
       "2. Legionnaire (+4 Strength, +1 Endurance) \n"
       "3. Ranger (+3 Agility, +2 Strength) \n"
       "4. Doctor (+5 intellect) \n"
       "5. Bard (+4 Charisma, +1 Agility) \n"
-      "6. Alchemist (+3 Intelligence, +2 Endurance) \n"
-      "7. Danny Devito (Content unlocks after finishing the game once)  \n")
+      "6. Alchemist (+3 Intelligence, +2 Endurance) \n")
 classer = int(input("Enter your choice >>>"))
 
 if(classer ==1):
@@ -202,7 +205,7 @@ if(classer ==1):
     endRoll = endRoll + 1
     intRoll = intRoll + 1
     chaRoll = chaRoll + 1
-    print("\n The stat points for your character are : ")
+    print(Fore.CYAN + "\n The stat points for your character are : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -212,7 +215,7 @@ if(classer ==1):
 elif(classer == 2):
     strRoll = strRoll + 4
     endRoll = endRoll + 1
-    print("\n The stat points for your character are : ")
+    print(Fore.CYAN + "\n The stat points for your character are : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -224,7 +227,7 @@ elif(classer == 2):
 elif(classer == 3):
     agiRoll = agiRoll + 3
     strRoll = strRoll + 2
-    print("\n The stat points for your character are : ")
+    print(Fore.CYAN + "\n The stat points for your character are : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -233,7 +236,7 @@ elif(classer == 3):
 
 elif(classer == 4):
     intRoll = intRoll + 5
-    print("\n The stat points for your character are : ")
+    print(Fore.CYAN + "\n The stat points for your character are : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -243,7 +246,7 @@ elif(classer == 4):
 elif(classer == 5):
     charRoll = chaRoll + 4
     agiRoll = agiRoll + 1
-    print("\n The stat points for your character are : ")
+    print(Fore.CYAN + "\n The stat points for your character are : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -253,7 +256,7 @@ elif(classer == 5):
 elif(classer == 6):
     intRoll = intRoll + 3
     endRoll = endRoll + 3
-    print("\n The stat points for your character are : ")
+    print(Fore.CYAN + "\n The stat points for your character are : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -275,10 +278,10 @@ else:
 
 
 
-print("\n Now that we've set the statistic points, let's proceed with the story \n")
+print(Fore.YELLOW + "\n Now that we've set the statistic points, let's proceed with the story \n")
 
 def print_Stat():
-    print("\n You take a good look at yourself,realising that your stat build is : ")
+    print(Fore.BLUE + "\n You take a good look at yourself,realising that your stat build is : ")
     print(" Strength : ", strRoll)
     print(" Agility : ", agiRoll)
     print(" Endurance : ",endRoll)
@@ -293,7 +296,7 @@ def intro():
   pygame.mixer.music.load(castle)
   pygame.mixer.music.play(-1)
   
-  print ("\n You wake up in a damp room, the air so thick that you "
+  print (Fore.GREEN + "\n You wake up in a damp room, the air so thick that you "
          "can tangibly feel it on your tongue. You get out of bed "
          "groggily but suddenly feel the urge to vomit. You lurch "
          "toward the thing that looks like a bucket and give in to "
@@ -317,33 +320,9 @@ def intro():
          "you need to reach the contents of the letter but can't risk damaging"
          "the letter, what do you do next? dev note: Add room pics here \n")
   time.sleep(1)
-  pygame.display.set_caption=("Text-Based Game")
-  screen=pygame.display.set_mode((1000,1000))
-
-  font=pygame.font.SysFont("Bold",36)
-  text=font.render("Dungeon Adventure", True, (255,255,255))
-
-  Gaem=pygame.font.SysFont("Italic",72)
-  text1=font.render("We shall now set the stat points for the game. These points", True, (255,255,0))
-  text2=font.render(" are going to determine the actions that a player can physically ", True, (255,255,0))
-  text3=font.render("achieve. We would suggest taking actions based on the structure ", True, (255,255,0))
-  text4=font.render("of your stat build (i.e try to make actions which rely on stats ", True, (255,255,0))
-  text5=font.render(" which you have an abundance in). These points shall be set randomly,", True, (255,255,0))
-  text6=font.render("but the player can have an option in a specific bonus in a particular"
-                      " set of stats.", True, (255,255,0))
-  screen.blit(text, (500,0))
-  screen.blit(text1, (0,50))
-  screen.blit(text2, (0,80))
-  screen.blit(text3, (0,110))
-  screen.blit(text4, (0,140))
-  screen.blit(text5, (0,170))
-  screen.blit(text6, (0,200))
-
-  image=pygame.image.load(r'C:\Users\Ashwin\Desktop\La Image Martain\cave.jpg')
-  screen.blit(image, (150,230))
-  pygame.display.update()
+  
  
-  print ("""  A. Search for a means to solve your little conundrum
+  print (Fore.CYAN + """  A. Search for a means to solve your little conundrum
   B. Wait for someone to come and rescue you
   C. Shout for help with everything you've got
   D. Have a look at your stat build
@@ -366,12 +345,12 @@ def intro():
  
    
 def option_Pencil():
-  print ("\n You start searching for helpful things that could help you out of your sorry situation. "
+  print (Fore.GREEN + "\n You start searching for helpful things that could help you out of your sorry situation. "
          "After an extensive search of your surroundings, you find a set of matches, a little lamp  "
          "some dental floss in your little room. "
          "What would you like to do next? \n")
   time.sleep(1)
-  print ("""  A. Try to tamper with the seal to access the contents of the envelope
+  print (Fore.CYAN + """  A. Try to tamper with the seal to access the contents of the envelope
   B. Bang on the door for help """)
   choice = input(">>> ")
   if choice in answer_A:
@@ -386,7 +365,7 @@ def option_Pencil():
    
 
 def option_Sleeze():
-  print("\n Achievement unlocked: Thou art a couch potato. Even in this hostile environment, you can only think of sleep. Can totally relate, dude. "
+  print(Fore.GREEN + "\n Achievement unlocked: Thou art a couch potato. Even in this hostile environment, you can only think of sleep. Can totally relate, dude. "
         "Now get a move on with the story, yeah? That's why I made the gaem. Developer out. \n")
  
   print("\n You are tired. There is a bed near you. Isn't it obvious what you should do? Let's take a little nap and think "
@@ -394,7 +373,7 @@ def option_Sleeze():
         " ||You can't sleep now, there are monsters nearby|| Wising up, you realize you have a Minecraft addiction and ponder your next move. \n")
   time.sleep(1)
 
-  print (""" A. Try to search for a way to bust your self out or maybe open that envelope you found
+  print (Fore.CYAN + """ A. Try to search for a way to bust your self out or maybe open that envelope you found
  B. Bang at the door and shout, trying to get someones attention
  C. Don't press C, Just DONT okay, I'm too lazy to rearrange the options
  D. Inspect the door to see if you can break through
@@ -416,12 +395,12 @@ def option_Sleeze():
       option_Sleeze()
 
 def option_Starscream():
-  print("\n You bang on the door with everything you've got, shouting for help in all the languages you know (Which is just English btw) "
+  print(Fore.GREEN + "\n You bang on the door with everything you've got, shouting for help in all the languages you know (Which is just English btw) "
         " You can only hear the deafening sound of silence, as well as your insecurities, screaming at you for wearing your worst pair of pants you own. "
         " What will your next move be ?: \n")
   time.sleep(1)
 
-  print (""" A. Try to search for a way to bust your self out or maybe open that envelope you found
+  print (Fore.CYAN + """ A. Try to search for a way to bust your self out or maybe open that envelope you found
  B. Continue to  try to get someone's attention from the outside by causing a racket
  C. Lie on your bed in defeat, maybe someone will come and collect you later
  D. Check your stats
@@ -444,11 +423,11 @@ def option_Starscream():
 
 def option_sinistro():
 
-    print("\n As you observe the door, you realise that rather that it has an ornate lock with a golden keyhole on one of the sides. You probably need a key to "
+    print(Fore.GREEN + "\n As you observe the door, you realise that rather that it has an ornate lock with a golden keyhole on one of the sides. You probably need a key to "
           "escape this room and embrace the warm sunlight of the outside world. Unless ... \n")
     time.sleep(1)
 
-    print (""" A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+    print (Fore.CYAN + """ A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
   B. If you can't move around a wall, you've gotta push through it : Let's break the lock
   C. Punching the lock into a battered shape sounds like a stressful idea. Maybe we can try to pick it instead
   D. Check your stat build""")
@@ -468,18 +447,18 @@ def option_breaker():
     time.sleep(1)
 
     if(strRoll>=6):
-        print("\n You throw a couple of punches at the lock and are pleasantly surprised to see some leeway for your efforts. You take a deep breath before you pound at "
+        print(Fore.GREEN + "\n You throw a couple of punches at the lock and are pleasantly surprised to see some leeway for your efforts. You take a deep breath before you pound at "
               "your metallic gatekeeper, which slowly starts to give until eventually the contraption keeping you prisoner breaks, allowing you to access the surrounding "
               "areas. At this point, you are sweating profusely, and have blisters on your hands. You step out of your cell and brace yourself for whatever's coming next. \n")
         option_remy()
 
     else:
-        print("\n You valiantly try to break the lock by punching, kicking and swearing at it. Your efforts are unrewarded; the lock stands firm. In despair, you throw your "
+        print(Fore.GREEN + "\n You valiantly try to break the lock by punching, kicking and swearing at it. Your efforts are unrewarded; the lock stands firm. In despair, you throw your "
               " bucket at it, but you might as well be trying to fill water in a sieve or insert some other corny idiom here. ")
 
         print("\n After that disastrous attempt failed you decide that there's no point trying to continue in this direction anymore and you think on your next course of action: ")
        
-        print (""" A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+        print (Fore.CYAN + """ A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
        B. You could always cry for help
        C. Maybe you can try to pick this lock instead
        D. Check your stat build""")
@@ -497,7 +476,7 @@ def option_breaker():
 def option_smooth():
     print("Stat Check: Intellect(6)")
     if(intRoll>=6):
-        print("\n You remember seeing a thin screw jutting out from one of the legs of the bed. You squat down on your knees take a good look at it. It is long and has a flat tip, "
+        print(Fore.GREEN + "\n You remember seeing a thin screw jutting out from one of the legs of the bed. You squat down on your knees take a good look at it. It is long and has a flat tip, "
               "and seems rather out of place in the whole structure of the bed. You take a deep breath and tug at it, bracing yourself for the collapse of the whole structure but miraculously"
               " the bed remains standing even after you've taken the screws out from one of its legs. Your idiot brain then reminds you that three other legs are keeping this "
               "thing from collapsing on its own weight. Sighing, you approach the door.")
@@ -508,9 +487,9 @@ def option_smooth():
         option_remy()
 
     else:
-        print("\n You scramble to find something to pick the lock with, but everything you find seems rather unsuitable for the task. You find a screw jutting out from underneath one of "
+        print(Fore.GREEN + "\n You scramble to find something to pick the lock with, but everything you find seems rather unsuitable for the task. You find a screw jutting out from underneath one of "
               "The bed's legs that you could use, but spoiler alert: You can't; You're too dumb lol. You try to figure out what to do next. ")
-        print (""" A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
+        print (Fore.CYAN + """ A. Maybe there'll be something in this envelope you found. Let's have look around to try and break the seal on it
        B. You could always cry for help
        C. Maybe you can try to bash the living shit out of this mother flipping lock
        D. Check your stat build""")
@@ -527,14 +506,14 @@ def option_smooth():
 
 def option_bernie():
 
-    print("\n You realize that you can try and remove the seal in two ways: You can burn until the wax drips off "
+    print(Fore.GREEN + "\n You realize that you can try and remove the seal in two ways: You can burn until the wax drips off "
           "or you could use the string to slowly cut the seal from the paper. You could always just kill time by "
           "humming the Witcher theme but something tells you that probably isn't productive. That same thing is also "
           "tells you that you are a moron of extraordinary proportions. It appears that you have some sense of rational thought"
           " in that big pink blob between your ears. In any case, you gotta make a decision, chief. ")
     time.sleep(1)
 
-    print ("""  A. Try to burn the seal to make the wax drip
+    print (Fore.CYAN + """  A. Try to burn the seal to make the wax drip
    B. Try to cut the seal from the envelope
    C. Take a look at the door instead: Perhaps there are other ways to break out of here
    D. Take a look at your stats""")
@@ -559,11 +538,11 @@ def option_bernie():
 
 def option_Secondscream():
 
-    print("\n You persevere and continue to bang on the door, hoping that someone out there can hear your pleas for help and come and rescue"
+    print(Fore.GREEN + "\n You persevere and continue to bang on the door, hoping that someone out there can hear your pleas for help and come and rescue"
           " your sorry ass. But your efforts seem to fall on deaf ears {Much like all your requests for a lightsaber :( }. You realize that "
           " you have to try a different approach. ")
 
-    print ("""A. Try to search for a way to bust your self out or maybe open that envelope you found
+    print (Fore.CYAN + """A. Try to search for a way to bust your self out or maybe open that envelope you found
    B. Do not select B plz
    C. Lie on your bed in defeat,maybe someone will come and collect you later
    D. Check your stats
@@ -587,7 +566,7 @@ def option_Secondscream():
 def option_goulding():
 
  
-  print("\n You light a match and light the lamp you found. After doing that, you gently put the seal of the envelope under the "
+  print(Fore.GREEN + "\n You light a match and light the lamp you found. After doing that, you gently put the seal of the envelope under the "
         " the flame of the lamp. Because you are an utter klutz, the entire envelope catches fire and before you knew it, you "
         " dropped the envelope and the fire slowly dies down after consuming the letter inside the envelope in its entirety. "
         " As you wail in despair, you can see a glint coming from the ashes. You quickly try to reach the shiny object, only for the "
@@ -603,7 +582,7 @@ def option_goulding():
 def option_kusanagi():
 
   od.play()
-  print("\n You slowly cut your way through the seal, unceremoniously throwing it aside after you free the envelope from it's *EVIL* clutches "
+  print(Fore.GREEN + "\n You slowly cut your way through the seal, unceremoniously throwing it aside after you free the envelope from it's *EVIL* clutches "
         "You uncover a piece of paper and a beautiful key. You attempt to read what's on the paper but it seems it was written in a language you can't understand. "
         " As 'We are the champions' by a certain Freddy M plays in your head after your relatively easy accomplishment, you make your way to the door, "
         " which you unlock not before murmuring 'No time for losers', you make your way to what you guess is the outside world. ")
@@ -627,7 +606,7 @@ def option_remy():
     global mcnugget
     global hat
     
-    print("\n End of chapter 1; Start of chapter 2")
+    print(Fore.GREEN + "\n End of chapter 1; Start of chapter 2")
 
     print("\n As you move past the cranky iron stooge, you detect the presence of several weapons on a holster towards your left side. "
               "Curious, you take a peek at contents, discovering a broadsword, a dagger and a crossbow with a few bolts. Not the finest quality that money can buy,"
@@ -635,7 +614,7 @@ def option_remy():
               "other than the fact there are fucking medival weapons on the fucking wall. Might as well pick up one I suppose, although I doubt anyone who sees you holding a deadly object"
               " with a pointy end facing toward them is going to think you're very friendly. ")
 
-    print ("""    A. Pick up the broadswoard
+    print (Fore.CYAN + """    A. Pick up the broadswoard
    B. Grab the dagger
    C. Acquire the crossbow
    D. Check stats
@@ -680,7 +659,7 @@ def option_remy():
           "mangled corpse that reaches the next floor. Will you able to overcome the first obstacle, or will you, like so many before you fall to the very first hurdle ?'"
           "Your knees begin to buckle as the ", b1name, " stares you down. You've got to move, and fast .")
 
-    print ("""  A. Object because ... duh
+    print (Fore.CYAN + """  A. Object because ... duh
   B. Try and stall to understand the situation a bit better
   C. Try to communicate with ... with uhh *rubs temples* ... John Lenon over here
   D. Are you McFucking kidding me ?? RUN BOY RUN !
@@ -711,20 +690,20 @@ def option_Ispeak():
     global hat
 
     if(mcnugget == 0):
-        print("\n 'I object !' you yell, finally finding your voice amidst all this ruckus going on right in front of you. 'It would seem that you are not mute after all, peasant.' "
+        print(Fore.GREEN + "\n 'I object !' you yell, finally finding your voice amidst all this ruckus going on right in front of you. 'It would seem that you are not mute after all, peasant.' "
               "echoes the voice. 'What do you object to ?' ")
-        print("Stat Check : Int(3)")
+        print(Fore.GREEN + "Stat Check : Int(3)")
         if(intRoll>3) :
             mcnugget = 1
         else :
-            print("You try your hardest to find the words to ask about the burning questions you have, but you are seemingly unable to do just that. You stand with your jaw hanging out "
+            print(Fore.GREEN + "You try your hardest to find the words to ask about the burning questions you have, but you are seemingly unable to do just that. You stand with your jaw hanging out "
                   "for what seems to be a few milienia before the voice, apparently bored now, says 'Since you have nothing to say, let the Trial begin! Lenon, Hardzakum !' ")
-            print("The ",b1name,"readies itself, and suddenly lurches forward to attack you !")
+            print(Fore.GREEN + "The ",b1name,"readies itself, and suddenly lurches forward to attack you !")
             hat = 0
             option_Banzai()
 
     if(mcnugget == 1):
-        print("\n 'Wait a moment !' you exclaim at the walls of your corridor. 'I have a whole bunch of questions for you, bucko', you continue, all the while scanning your surroundings,"
+        print(Fore.GREEN + "\n 'Wait a moment !' you exclaim at the walls of your corridor. 'I have a whole bunch of questions for you, bucko', you continue, all the while scanning your surroundings,"
               "trying to find any advantage that you can get if the ", b1name, " decides to attack you. 'What am I doing here ? Who are you ? What even is John Lenon ? Can I wash my "
               "red and pink laundry in the same wash if I set it a slow speed ? And what in the name of the Kool Aid Man is this 'Trial of the Sketchers' ??' "
               "You pause to catch your breath before contnuing your tirade, 'Did you know that kidnapping is a very serious offense ? You could get a jail term of upto fourteen years "
@@ -737,7 +716,7 @@ def option_Ispeak():
         
 def option_Coward():
 
-    print("\n Nope Nope NOPE. This isn't what you signed up for at all considering that you didn't sign up for anything at all. You turn tail and attempt to flee back into the room you "
+    print(Fore.GREEN + "\n Nope Nope NOPE. This isn't what you signed up for at all considering that you didn't sign up for anything at all. You turn tail and attempt to flee back into the room you "
           "were once held prisoner in. ")
     print("Agility Check : 2 or 3 ")
 
@@ -772,7 +751,7 @@ def option_Coward():
 def option_banzai():
     global hat
     if(hat == 0):
-        print("You rush straight towards the ",b1name," and try to attack it while it's surprised by your initial brute charge. The tactic works for a time as John Lennon immideately "
-              "retreats, leaping backwards while still keeping his eyes on your movements. Suddenly, he lunges straight towards you with his claws drawn out and you.
+        print(Fore.GREEN + "You rush straight towards the ",b1name," and try to attack it while it's surprised by your initial brute charge. The tactic works for a time as John Lennon immideately "
+              "retreats, leaping backwards while still keeping his eyes on your movements. Suddenly, he lunges straight towards you with his claws drawn out and you.")
 
 intro()
